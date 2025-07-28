@@ -5,8 +5,9 @@ test('Check specific elements on Playwright homepage', async ({ page }) => {
   await page.goto('https://playwright.dev/');
 
   // Check if navbar with specific class is present
-  const navbar = await page.locator('.theme-layout-navbar-left.navbar__items');
-  await expect(navbar).toBeVisible();
+  const playwrightHeader = await page.locator('.navbar__title.text--truncate', { hasText: 'Playwright' });
+  // Ensure the header is visible');
+  await expect(playwrightHeader).toBeVisible();
 
   // Check if links with specific href attributes are present
   const vsCodeLink = await page.locator('a[href="https://code.visualstudio.com"]');
@@ -14,6 +15,9 @@ test('Check specific elements on Playwright homepage', async ({ page }) => {
 
   const bingLink = await page.locator('a[href="https://bing.com"]');
   await expect(bingLink).toBeVisible();
+
+  const outlookLink = await page.locator('a[href="https://outlook.com"]');
+  await expect(outlookLink).toBeVisible();
 
   const hotstarLink = await page.locator('a[href="https://www.hotstar.com/"]');
   await expect(hotstarLink).toBeVisible();
